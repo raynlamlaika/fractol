@@ -1,6 +1,6 @@
 NAME = fractol
 
-SRC = fractol.c
+SRC = fractol.c init_fractal.c malbor.c utils.c julia.c
 
 OBJ = $(SRC:.c=.o)
 BOBJ = $(BSRC:.c=.o)
