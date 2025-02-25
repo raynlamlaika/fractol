@@ -6,22 +6,23 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 08:58:36 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/02/23 15:33:43 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/02/25 16:25:40 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
 int key_hook(int keycode, t_fractal *frac)
 {
 	if (keycode == KEY_PLUS)
-		frac->iter += 10;
+		frac->interation += 10;
 	else if(keycode == KEY_MINUS)
-		frac->iter -= 10;
+		frac->interation -= 10;
 	else if (keycode == KEY_LEFT)
 		frac->offsetreal -= 0.1 / frac->zoom;
 	else if (keycode == KEY_RIGHT)
 		frac->offsetreal += 0.1 / frac->zoom;
-	else if (keycode == ESC)
+	else if (keycode == 53)
 		exit(0);
 	draw_mlbro(frac);
 	mlx_put_image_to_window(frac->init, frac->wind, frac->img, 0, 0);
@@ -29,9 +30,9 @@ int key_hook(int keycode, t_fractal *frac)
 }
 int	mouse_hook(int button, int x, int y, t_fractal *frac)
 {
-	if (button == SCROLL_UP)
+	if (button == 4) // scroll up
 		frac->zoom *= 1.1;
-	else if (button == SCROLL_DOWN)
+	else if (button == 5) // scroll down
 		frac->zoom /= 1.1;
 	draw_mlbro(frac);
 	mlx_put_image_to_window(frac->init, frac->wind, frac->img, 0, 0);
