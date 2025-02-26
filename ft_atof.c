@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 09:34:22 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/02/25 10:17:30 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/02/26 17:06:46 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ static int	check_float(char *helper, int i)
 	if (helper[i] == '-' || helper[i] == '+')
 	{
 		i++;
-		printf("test:%d\n", helper[i]);
 		if (helper[i] < '0' || helper[i] > '9')
 			return (write(2, "argument not valid\n", 19), exit(1), 0);
 	}

@@ -6,20 +6,20 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 19:11:23 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/02/25 10:30:37 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/02/26 16:16:51 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-size_t ft_strlen(char *str)
+size_t	ft_strlen(char *str)
 {
 	int	i;
 
 	i = 0;
 	if (!str)
 		return (0);
-	while(str[i])
+	while (str[i])
 		i++;
 	return (i);
 }
