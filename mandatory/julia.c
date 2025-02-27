@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 15:04:59 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/02/27 10:00:35 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/02/27 20:42:39 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,9 +79,14 @@ int	init_julia(t_fractal *frac, char**av)
 	return (1);
 }
 
-void	check_pass_julia(int ac, char **av, t_fractal *frac)
+void	check_pass_julia(char **av, t_fractal *frac)
 {
 	if (ft_strncmp("Julia", av[1], 6) == 0 && ft_atof(av[2]) && ft_atof(av[3]))
 		init_julia(frac, av);
+	else
+	{
+		free(frac);
+		exit(1);
+	}
 	mlx_loop(frac->init);
 }

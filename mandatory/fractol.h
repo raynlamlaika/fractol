@@ -6,14 +6,14 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 08:58:31 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/02/27 11:48:04 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/02/27 20:42:53 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-# include "../mlx/mlx.h"
+# include "mlx.h"
 # include <math.h>
 # include <stdlib.h>
 # include <stdio.h>
@@ -60,7 +60,7 @@ int		ft_strncmp(const char *str1, const char *str2, size_t num);
 void	my_mlx_pixel_put(t_fractal *mlx);
 void	draw_mlbro(t_fractal *frac);
 void	finishing(t_fractal *frac);
-void	check_pass_julia(int ac, char**av, t_fractal *frac);
+void	check_pass_julia(char**av, t_fractal *frac);
 size_t	ft_strlen(char *str);
 double	ft_atof(char *tfloat);
 // int		key_hook(int keycode, t_fractal *frac);

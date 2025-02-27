@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 08:58:36 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/02/27 09:59:26 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/02/27 20:43:05 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,9 @@ int	main(int ac, char**av)
 			return (write(2, "Invalid argument\n", 18), free(frac), 0);
 	}
 	if (ac == 4)
-		check_pass_julia(ac, av, frac);
+		check_pass_julia(av, frac);
+	else
+		return (free(frac), exit(1), 0);
 	finishing(frac);
 	return (0);
 }
