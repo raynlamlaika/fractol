@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   julia.c                                            :+:      :+:    :+:   */
+/*   julia_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 15:04:59 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/02/26 16:17:51 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/02/27 11:31:33 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"fractol.h"
+#include "fractol_bonus.h"
 
 void	mouse_position(int x, int y, t_fractal *frac)
 {
@@ -40,8 +40,10 @@ int	mouse_hook_julia(int button, int x, int y, t_fractal *frac)
 	double	mouse_real;
 	double	mouse_imag;
 
-	mouse_real = (x - frac->position_x) * 4.0 / (WIDTH * frac->zoom) + frac->offsetreal;
-	mouse_imag = (y - frac->position_y) * 4.0 / (HEIGHT * frac->zoom) + frac->offsetimag;
+	mouse_real = (x - frac->position_x) * 4.0 / \
+	(WIDTH * frac->zoom) + frac->offsetreal;
+	mouse_imag = (y - frac->position_y) * 4.0 / \
+	(HEIGHT * frac->zoom) + frac->offsetimag;
 	if (button == 4)
 	{
 		frac->zoom *= 1.1;
@@ -77,7 +79,7 @@ int	init_julia(t_fractal *frac, char**av)
 	return (1);
 }
 
-void	check_pass_julia(int ac,char **av, t_fractal *frac)
+void	check_pass_julia(int ac, char**av, t_fractal *frac)
 {
 	if (ft_strncmp("Julia", av[1], 6) == 0 && ft_atof(av[2]) && ft_atof(av[3]))
 		init_julia(frac, av);

@@ -6,14 +6,14 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 08:58:31 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/02/26 16:54:59 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/02/27 11:48:04 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-# include "mlx/mlx.h"
+# include "../mlx/mlx.h"
 # include <math.h>
 # include <stdlib.h>
 # include <stdio.h>
@@ -51,11 +51,13 @@ typedef struct s_fractal
 	double	julia_c_real;
 	double	position_x;
 	double	position_y;
+	int		x_loop;
+	int		y_loop;
 }			t_fractal;
 
 int		init_fractal(t_fractal *fractal);
 int		ft_strncmp(const char *str1, const char *str2, size_t num);
-void	my_mlx_pixel_put(t_fractal *mlx, int x, int y);
+void	my_mlx_pixel_put(t_fractal *mlx);
 void	draw_mlbro(t_fractal *frac);
 void	finishing(t_fractal *frac);
 void	check_pass_julia(int ac, char**av, t_fractal *frac);

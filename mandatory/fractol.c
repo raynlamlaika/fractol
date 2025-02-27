@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 08:58:36 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/02/26 16:54:38 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/02/27 09:59:26 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,7 @@
 
 int	key_hook_mandel(int keycode, t_fractal *frac)
 {
-	if (keycode == KEY_PLUS)
-		frac->interation += 10;
-	else if (keycode == KEY_MINUS)
-		frac->interation -= 10;
-	else if (keycode == KEY_LEFT)
+	if (keycode == KEY_LEFT)
 		frac->offsetreal -= 0.1 / frac->zoom;
 	else if (keycode == KEY_RIGHT)
 		frac->offsetreal += 0.1 / frac->zoom;
@@ -34,32 +30,26 @@ int	mouse_hook_mandel(int button, int x, int y, t_fractal *frac)
 	double	mouse_real;
 	double	mouse_imag;
 
-	mouse_real = (x - frac->position_x) * 4.0 / (WIDTH * frac->zoom) + frac->offsetreal;
-	mouse_imag = (y - frac->position_y) * 4.0 / (HEIGHT * frac->zoom) + frac->offsetimag;
+	mouse_real = (x - frac->position_x) * 2.0 / (WIDTH * frac->zoom) + -2;
+	mouse_imag = (y - frac->position_y) * 2.0 / (HEIGHT * frac->zoom) + 2;
 	if (button == 4)
-	{
 		frac->zoom *= 1.1;
-		frac->offsetreal += (mouse_real - frac->offsetreal) * (1 - 1 / 1.1);
-		frac->offsetimag += (mouse_imag - frac->offsetimag) * (1 - 1 / 1.1);
-	}
 	else if (button == 5)
-	{
 		frac->zoom /= 1.1;
-		frac->offsetreal += (mouse_real - frac->offsetreal) * (1 - 1.1);
-		frac->offsetimag += (mouse_imag - frac->offsetimag) * (1 - 1.1);
-	}
 	draw_mlbro(frac);
 	mlx_put_image_to_window(frac->init, frac->wind, frac->img, 0, 0);
 	return (0);
 }
 
-void	my_mlx_pixel_put(t_fractal *fract, int x, int y)
+void	my_mlx_pixel_put(t_fractal *fract)
 {
 	char	*pixel;
 
-	if (x >= 0 && x < WIDTH && y >= 0 && y < HEIGHT)
+	if (fract->x_loop >= 0 && fract->x_loop < WIDTH && \
+		fract->y_loop >= 0 && fract->y_loop < HEIGHT)
 	{
-		pixel = fract->addr + (y * fract->line_length + x * (fract->bits_for_pixel / 8));
+		pixel = fract->addr + (fract->y_loop * \
+		fract->line_length + fract->x_loop * (fract->bits_for_pixel / 8));
 		*(unsigned int *)pixel = fract->color;
 	}
 }
@@ -67,8 +57,6 @@ void	my_mlx_pixel_put(t_fractal *fract, int x, int y)
 void	draw_mandelbort(t_fractal *frac)
 {
 	init_fractal(frac);
-	frac->position_y = -2;
-	frac->position_x = 2;
 	draw_mlbro(frac);
 	mlx_put_image_to_window(frac->init, frac->wind, frac->img, 0, 0);
 	mlx_mouse_hook(frac->wind, mouse_hook_mandel, frac);

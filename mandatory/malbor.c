@@ -6,13 +6,13 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 19:08:41 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/02/26 17:08:19 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/02/27 18:27:21 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-static void	helper(t_fractal *frac, int x, int y, double imag, double real)
+static void	helper(t_fractal *frac, double imag, double real)
 {
 	int		iter;
 	double	newimg;
@@ -20,10 +20,11 @@ static void	helper(t_fractal *frac, int x, int y, double imag, double real)
 	double	tmp;
 
 	iter = 0;
-	frac->interation = 70;
+	frac->interation = 20;
 	newreal = 0.0;
 	newimg = 0.0;
-	while ((newimg * newimg + newreal * newreal) <= 2 && frac->interation > iter)
+	while ((newimg * newimg + newreal * newreal) <= 4 \
+			&& frac->interation > iter)
 	{
 		tmp = newreal * newreal - newimg * newimg + real;
 		newimg = 2 * newreal * newimg + imag;
@@ -34,27 +35,27 @@ static void	helper(t_fractal *frac, int x, int y, double imag, double real)
 		frac->color = 0x000000;
 	else
 		frac->color = (iter * 255 / frac->interation) * 0x010100;
-	my_mlx_pixel_put(frac, y, x);
+	my_mlx_pixel_put(frac);
 }
 
 void	draw_mlbro(t_fractal *frac)
 {
-	int		x;
-	int		y;
 	double	real;
 	double	imag;
 
-	x = 0;
-	while (x < WIDTH)
+	frac->x_loop = 0;
+	frac->position_y = -2;
+	frac->position_x = 2;
+	while (frac->x_loop < WIDTH)
 	{
-		y = 0;
-		while (y < HEIGHT)
+		frac->y_loop = 0;
+		while (frac->y_loop < HEIGHT)
 		{
-			real = (x - frac->position_x) * 4.0 / (WIDTH * frac->zoom) + frac->offsetreal;
-			imag = (y - frac->position_y) * 4.0 / (HEIGHT * frac->zoom) + frac->offsetimag;
-			helper(frac, x, y, real, imag);
-			y++;
+			real = ((frac->x_loop - WIDTH / 2) / (WIDTH * 0.2)) / frac->zoom;
+			imag = ((frac->y_loop - HEIGHT / 2) / (HEIGHT * 0.2)) / frac->zoom;
+			helper(frac, imag, real);
+			frac->y_loop++;
 		}
-		x++;
+		frac->x_loop++;
 	}
 }
