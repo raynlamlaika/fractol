@@ -6,12 +6,11 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 19:11:23 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/02/27 11:31:38 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/02/28 00:51:15 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol_bonus.h"
-
 
 size_t	ft_strlen(char *str)
 {

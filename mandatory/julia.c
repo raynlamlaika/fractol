@@ -6,11 +6,11 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 15:04:59 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/02/27 20:42:39 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/02/28 00:51:31 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"fractol.h"
+#include "fractol.h"
 
 void	mouse_position(int x, int y, t_fractal *frac)
 {
