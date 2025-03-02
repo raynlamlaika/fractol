@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 08:58:36 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/02/27 20:43:05 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/03/01 23:30:37 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	mouse_hook_mandel(int button, int x, int y, t_fractal *frac)
 	double	mouse_real;
 	double	mouse_imag;
 
-	mouse_real = (x - frac->position_x) * 2.0 / (WIDTH * frac->zoom) + -2;
+	mouse_real = (x - frac->position_x) * 2.0 / (WIDTH * frac->zoom) + 2;
 	mouse_imag = (y - frac->position_y) * 2.0 / (HEIGHT * frac->zoom) + 2;
 	if (button == 4)
 		frac->zoom *= 1.1;

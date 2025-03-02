@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fractol_bonus.c                                    :+:      :+:    :+:   */
+/*   buring_ship_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/20 08:58:36 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/03/01 22:25:24 by rlamlaik         ###   ########.fr       */
+/*   Created: 2025/02/28 13:13:40 by rlamlaik          #+#    #+#             */
+/*   Updated: 2025/03/01 22:25:00 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol_bonus.h"
 
-int	key_hook_mandel(int keycode, t_fractal *frac)
+int	key_hook_borning(int keycode, t_fractal *frac)
 {
 	if (keycode == KEY_PLUS)
 		frac->interation += 10;
@@ -29,7 +29,7 @@ int	key_hook_mandel(int keycode, t_fractal *frac)
 	return (0);
 }
 
-int	mouse_hook_mandel(int button, int x, int y, t_fractal *frac)
+int	mouse_hook_borning(int button, int x, int y, t_fractal *frac)
 {
 	double	mouse_real;
 	double	mouse_imag;
@@ -58,53 +58,66 @@ int	mouse_hook_mandel(int button, int x, int y, t_fractal *frac)
 	return (0);
 }
 
-void	my_mlx_pixel_put(t_fractal *fract)
-{
-	char	*pixel;
-
-	if (fract->x_loop >= 0 && fract->x_loop < WIDTH && \
-		fract->y_loop >= 0 && fract->y_loop < HEIGHT)
-	{
-		pixel = fract->addr + (fract->y_loop * \
-		fract->line_length + fract->x_loop * (fract->bits_for_pixel / 8));
-		*(unsigned int *)pixel = fract->color;
-	}
-}
-
-void	draw_mandelbort(t_fractal *frac)
+void	draw_borning(t_fractal *frac)
 {
 	init_fractal(frac);
 	frac->position_y = -2;
 	frac->position_x = 2;
 	draw_mlbro(frac);
 	mlx_put_image_to_window(frac->init, frac->wind, frac->img, 0, 0);
-	mlx_mouse_hook(frac->wind, mouse_hook_mandel, frac);
-	mlx_hook(frac->wind, 2, 0, key_hook_mandel, frac);
+	mlx_mouse_hook(frac->wind, mouse_hook_borning, frac);
+	mlx_hook(frac->wind, 2, 0, key_hook_borning, frac);
 	mlx_put_image_to_window(frac->init, frac->wind, frac->img, 0, 0);
 	mlx_loop(frac->init);
 	mlx_destroy_image(frac->init, frac->img);
 	mlx_destroy_window(frac->init, frac->wind);
 }
 
-int	main(int ac, char**av)
+static void	helper(t_fractal *frac, double imag, double real)
 {
-	t_fractal	*frac;
+	int		iter;
+	double	newimg;
+	double	newreal;
+	double	tmp;
 
-	frac = malloc(sizeof(t_fractal));
-	if (!frac)
-		return (write(2, "Allocation error\n", 18), 1);
-	if (ac == 2)
+	iter = 0;
+	frac->interation = 70;
+	newreal = 0.0;
+	newimg = 0.0;
+	while ((newimg * newimg + newreal * newreal) \
+			<= 4 && frac->interation > iter)
 	{
-		if (ft_strncmp("Mandelbrot", av[1], 11) == 0)
-			draw_mandelbort(frac);
-		else if (ft_strncmp("Burning_ship", av[1], 13) == 0);
-		else
-			return (write(2, "Invalid argument\n", 18), free(frac), 0);
+		tmp = newreal * newreal - newimg * newimg + real;
+		newimg = fabs(2 * newreal * newimg + imag);
+		newreal = tmp;
+		iter++;
 	}
-	if (ac == 4)
-		check_pass_julia(av, frac);
+	if (iter == frac->interation)
+		frac->color = 0x000000;
 	else
-		return (free(frac), exit(1), 0);
-	finishing(frac);
-	return (0);
+		frac->color = (iter * 255 / frac->interation) * 0x010100;
+	my_mlx_pixel_put(frac);
+}
+
+void	burning_ship(t_fractal *frac)
+{
+	double	real;
+	double	imag;
+
+	frac->x_loop = 0;
+	frac->y_loop = 0;
+	while (frac->x_loop < WIDTH)
+	{
+		frac->y_loop = 0;
+		while (frac->y_loop < HEIGHT)
+		{
+			real = (frac->x_loop - frac->position_x) * \
+					4.0 / (WIDTH * frac->zoom) + frac->offsetreal;
+			imag = (frac->y_loop - frac->position_y) * \
+					4.0 / (HEIGHT * frac->zoom) + frac->offsetimag;
+			helper(frac, imag, real);
+			frac->y_loop++;
+		}
+		frac->x_loop++;
+	}
 }

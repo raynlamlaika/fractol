@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 15:04:59 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/02/28 00:51:31 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/03/01 22:33:23 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ int	mouse_hook_julia(int button, int x, int y, t_fractal *frac)
 int	init_julia(t_fractal *frac, char**av)
 {
 	init_fractal(frac);
+	if(ft_atof(av[2]) <= 0 || ft_atof(av[2]) <= 0 )
 	frac->julia_c_imag = ft_atof(av[2]);
 	frac->julia_c_real = ft_atof(av[3]);
 	frac->position_y = -2;
@@ -86,6 +87,7 @@ void	check_pass_julia(char **av, t_fractal *frac)
 	else
 	{
 		free(frac);
+		write(2, "arrgmment not valid bro !!!\n", 29);
 		exit(1);
 	}
 	mlx_loop(frac->init);

@@ -1,7 +1,7 @@
 NAME = fractol
 
 SRCB = draw_julia_bonus.c fractol_bonus.c ft_atof_bonus.c init_fractal_bonus.c julia_bonus.c \
-       malbor_bonus.c utils_bonus.c
+       malbor_bonus.c utils_bonus.c buring_ship_bonus.c burning_helper.c 
 
 SRC = mandatory/fractol.c mandatory/init_fractal.c mandatory/malbor.c \
       mandatory/utils.c mandatory/julia.c mandatory/ft_atof.c mandatory/draw_julia.c 
@@ -22,7 +22,6 @@ bonus: $(NAME)_bonus
 
 $(NAME)_bonus: $(OBJB)
 	$(CC) $(OBJB) $(MLX_FLAGS) -o $(NAME)
-	touch $@  # Create/update a marker file
 
 $(NAME): $(OBJ)
 	$(CC) $(OBJ) $(MLX_FLAGS) -o $(NAME)

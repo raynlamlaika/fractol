@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 09:34:22 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/02/26 17:06:46 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/03/01 23:27:34 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,5 +77,7 @@ double	ft_atof(char *tfloat)
 			i++;
 		}
 	}
+	if ((tfloat[i] < '0' || tfloat[i] > '9') && tfloat[i])
+		return (write(2, "argument not valid\n", 19), exit(1), 0);
 	return (result * sign);
 }

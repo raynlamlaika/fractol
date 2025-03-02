@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 08:58:31 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/02/27 20:43:25 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/03/01 22:24:15 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ typedef struct s_fractal
 	int		x_loop;
 	int		y_loop;
 }			t_fractal;
+
 
 int		init_fractal(t_fractal *fractal);
 int		ft_strncmp(const char *str1, const char *str2, size_t num);
