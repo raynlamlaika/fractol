@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 08:58:36 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/03/01 22:25:24 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/03/02 21:42:43 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 int	key_hook_mandel(int keycode, t_fractal *frac)
 {
-	if (keycode == KEY_PLUS)
-		frac->interation += 10;
-	else if (keycode == KEY_MINUS)
-		frac->interation -= 10;
+	if (keycode == KEY_DOWN)
+		frac->offsetimag += 0.1 / frac->zoom;
+	else if (keycode == KEY_UP)
+		frac->offsetimag -= 0.1 / frac->zoom;
 	else if (keycode == KEY_LEFT)
 		frac->offsetreal -= 0.1 / frac->zoom;
 	else if (keycode == KEY_RIGHT)
@@ -28,6 +28,7 @@ int	key_hook_mandel(int keycode, t_fractal *frac)
 	mlx_put_image_to_window(frac->init, frac->wind, frac->img, 0, 0);
 	return (0);
 }
+
 
 int	mouse_hook_mandel(int button, int x, int y, t_fractal *frac)
 {
@@ -79,7 +80,8 @@ void	draw_mandelbort(t_fractal *frac)
 	draw_mlbro(frac);
 	mlx_put_image_to_window(frac->init, frac->wind, frac->img, 0, 0);
 	mlx_mouse_hook(frac->wind, mouse_hook_mandel, frac);
-	mlx_hook(frac->wind, 2, 0, key_hook_mandel, frac);
+	mlx_key_hook(frac->wind, key_hook_mandel, frac);
+	mlx_hook(frac->wind, 17, 0, &clearr, frac);
 	mlx_put_image_to_window(frac->init, frac->wind, frac->img, 0, 0);
 	mlx_loop(frac->init);
 	mlx_destroy_image(frac->init, frac->img);
@@ -97,7 +99,8 @@ int	main(int ac, char**av)
 	{
 		if (ft_strncmp("Mandelbrot", av[1], 11) == 0)
 			draw_mandelbort(frac);
-		else if (ft_strncmp("Burning_ship", av[1], 13) == 0);
+		else if (ft_strncmp("Burning_ship", av[1], 13) == 0)
+			draw_burning(frac);
 		else
 			return (write(2, "Invalid argument\n", 18), free(frac), 0);
 	}

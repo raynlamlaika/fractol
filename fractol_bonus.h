@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 08:58:31 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/03/01 22:24:15 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/03/02 22:10:23 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,9 @@
 # define WIDTH 1200
 # define HEIGHT 1200
 # define MAX_ITER 100
+
 # define ZOOM_OUT 4
 # define ZOOM_IN 5
-# define KEY_PLUS 69
-# define KEY_MINUS 78
 # define KEY_UP 126
 # define KEY_DOWN 125
 # define KEY_LEFT 123
@@ -69,5 +68,8 @@ void	draw_julia(t_fractal *frac);
 int		mouse_hook_julia(int button, int x, int y, t_fractal *frac);
 int		key_hook_julia(int keycode, t_fractal *frac);
 void	mouse_position(int x, int y, t_fractal *frac);
+void	burning_ship(t_fractal *frac);
+void	draw_burning(t_fractal *frac);
+int		clearr(t_fractal *frac);
 
 #endif

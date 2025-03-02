@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "fractol.h": "c",
-        "fractol_bonus.h": "c"
+        "fractol_bonus.h": "c",
+        "iterator": "c"
     }
 }

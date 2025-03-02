@@ -6,24 +6,18 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 15:04:59 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/03/01 22:33:23 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/03/02 22:21:43 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	mouse_position(int x, int y, t_fractal *frac)
+static int	key_hook_julia(int keycode, t_fractal *frac)
 {
-	frac->position_x = x;
-	frac->position_y = y;
-}
-
-int	key_hook_julia(int keycode, t_fractal *frac)
-{
-	if (keycode == KEY_PLUS)
-		frac->interation += 10;
-	else if (keycode == KEY_MINUS)
-		frac->interation -= 10;
+	if (keycode == KEY_UP)
+		frac->offsetimag += 0.1 / frac->zoom;
+	else if (keycode == KEY_DOWN)
+		frac->offsetimag -= 0.1 / frac->zoom;
 	else if (keycode == KEY_LEFT)
 		frac->offsetreal -= 0.1 / frac->zoom;
 	else if (keycode == KEY_RIGHT)
@@ -67,12 +61,11 @@ int	init_julia(t_fractal *frac, char**av)
 	if(ft_atof(av[2]) <= 0 || ft_atof(av[2]) <= 0 )
 	frac->julia_c_imag = ft_atof(av[2]);
 	frac->julia_c_real = ft_atof(av[3]);
-	frac->position_y = -2;
-	frac->position_x = 2;
 	draw_julia(frac);
 	mlx_put_image_to_window(frac->init, frac->wind, frac->img, 0, 0);
 	mlx_mouse_hook(frac->wind, mouse_hook_julia, frac);
-	mlx_hook(frac->wind, 2, 0, key_hook_julia, frac);
+	mlx_key_hook(frac->wind, key_hook_julia, frac);
+	mlx_hook(frac->wind, 17, 0, &clearr, frac);
 	mlx_put_image_to_window(frac->init, frac->wind, frac->img, 0, 0);
 	mlx_loop(frac->init);
 	mlx_destroy_image(frac->init, frac->img);

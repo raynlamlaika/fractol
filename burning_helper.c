@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 13:16:09 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/02/28 14:38:03 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/03/02 22:15:39 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 int	key_hook_burning(int keycode, t_fractal *frac)
 {
-	if (keycode == KEY_LEFT)
+	if (keycode == KEY_DOWN)
+		frac->offsetimag += 0.1 / frac->zoom;
+	else if (keycode == KEY_UP)
+		frac->offsetimag -= 0.1 / frac->zoom;
+	else if (keycode == KEY_LEFT)
 		frac->offsetreal -= 0.1 / frac->zoom;
 	else if (keycode == KEY_RIGHT)
 		frac->offsetreal += 0.1 / frac->zoom;
-	else if (keycode == KEY_UP)
-		frac->offsetimag -= 0.1 / frac->zoom;
-	else if (keycode == KEY_DOWN)
-		frac->offsetimag += 0.1 / frac->zoom;
 	else if (keycode == 53)
 		exit(0);
 	burning_ship(frac);
@@ -66,7 +66,8 @@ void	draw_burning(t_fractal *frac)
 	burning_ship(frac);
 	mlx_put_image_to_window(frac->init, frac->wind, frac->img, 0, 0);
 	mlx_mouse_hook(frac->wind, mouse_hook_burning, frac);
-	mlx_hook(frac->wind, 2, 0, key_hook_burning, frac);
+	mlx_key_hook(frac->wind, key_hook_burning, frac);
+	mlx_hook(frac->wind, 17, 0, &clearr, frac);
 	mlx_put_image_to_window(frac->init, frac->wind, frac->img, 0, 0);
 	mlx_loop(frac->init);
 	mlx_destroy_image(frac->init, frac->img);
