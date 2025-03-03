@@ -6,13 +6,13 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 15:04:59 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/03/02 22:21:43 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/03/03 21:09:16 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-static int	key_hook_julia(int keycode, t_fractal *frac)
+int	key_hook_julia(int keycode, t_fractal *frac)
 {
 	if (keycode == KEY_UP)
 		frac->offsetimag += 0.1 / frac->zoom;

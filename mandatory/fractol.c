@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 08:58:36 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/03/02 22:18:25 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/03/03 21:28:42 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,8 @@ void	draw_mandelbort(t_fractal *frac)
 	draw_mlbro(frac);
 	mlx_put_image_to_window(frac->init, frac->wind, frac->img, 0, 0);
 	mlx_mouse_hook(frac->wind, mouse_hook_mandel, frac);
-	mlx_hook(frac->wind, 2, 0, key_hook_mandel, frac);
+	mlx_key_hook(frac->wind, key_hook_mandel, frac);
+	mlx_hook(frac->wind, 17, 0, &clearr, frac);
 	mlx_put_image_to_window(frac->init, frac->wind, frac->img, 0, 0);
 	mlx_loop(frac->init);
 	mlx_destroy_image(frac->init, frac->img);

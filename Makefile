@@ -9,7 +9,7 @@ SRC = mandatory/fractol.c mandatory/init_fractal.c mandatory/malbor.c \
       mandatory/utils.c mandatory/julia.c mandatory/ft_atof.c mandatory/draw_julia.c  mandatory/clear.c
 
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -O3
+CFLAGS = -Wall -Werror -Wextra
 MLX_FLAGS =  -lmlx -framework OpenGL  -framework AppKit
 
 OBJ = $(SRC:.c=.o)

@@ -1,0 +1,36 @@
+first we init the the fractal with mlx functios 
+first   mlx_init() what is do ?
+         - it initialization for the mlx graphic library and return in pointer, 
+         exactly it will establish a connection to the correct graphical system and will return a void *
+
+
+secondly we call the function 
+        mlx_new_window():
+         - to open for us in window and return in pointer
+         which will return a pointer to the window we have just created. We can give the window height, width and a title.
+
+and we creat in image with the function 
+        mlx_new_image()
+         to creat in image in the window to work on it 
+         This is the recommended way to buffer the image you are rendering. It will accept a 
+        pointer to your MLX instance and requires a width and height. Will return a reference pointer to the image.
+after that we creat in pointer to hold the data from the the image that we open to localse the pexil
+        mlx_get_data_addr()
+         - all of that are by 
+    
+
+so right now we have our data that we  do work on it and the needed pointers and things so we are ready to star drawign with our mathimatiques formula
+
+the main ormula is Zn+1 = Zn2 + c
+    where we represent every element with 
+first in the helper funcltion we initialize the varibiles like the inter that he reresent the iteraiiton that 
+we will pass to the programe and  it start with and finish with the max iterations 
+
+
+
+
+
+
+
+
+
