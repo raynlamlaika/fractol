@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 08:58:31 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/03/02 22:10:49 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/03/04 05:59:50 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include "mlx.h"
 # include <math.h>
 # include <stdlib.h>
-# include <stdio.h>
 # include <unistd.h>
 
 # define TITLE "Fractal"
@@ -26,11 +25,6 @@
 
 # define ZOOM_OUT 4
 # define ZOOM_IN 5
-# define KEY_UP 126
-# define KEY_DOWN 125
-# define KEY_LEFT 123
-# define KEY_RIGHT 124
-# define KEY_PRESS_EVENT 2
 
 typedef struct s_fractal
 {
@@ -43,8 +37,6 @@ typedef struct s_fractal
 	int		endian;
 	int		interation;
 	double	zoom;
-	double	offsetreal;
-	double	offsetimag;
 	int		color;
 	double	julia_c_imag;
 	double	julia_c_real;
@@ -52,6 +44,7 @@ typedef struct s_fractal
 	double	position_y;
 	int		x_loop;
 	int		y_loop;
+	int		color_shift;
 }			t_fractal;
 
 int		clearr(t_fractal *frac);

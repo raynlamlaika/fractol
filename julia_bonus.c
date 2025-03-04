@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 15:04:59 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/03/02 21:55:11 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/03/04 06:16:02 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int	key_hook_julia(int keycode, t_fractal *frac)
 {
+	if (keycode == 49)
+		frac->color_shift = (rand() % 0xFFFFFF);
 	if (keycode == KEY_DOWN)
 		frac->offsetimag += 0.1 / frac->zoom;
 	else if (keycode == KEY_UP)

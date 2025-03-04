@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 08:58:36 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/03/03 21:28:42 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/03/04 06:14:29 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,11 @@
 
 int	key_hook_mandel(int keycode, t_fractal *frac)
 {
-	if (keycode == KEY_DOWN)
-		frac->offsetimag += 0.1 / frac->zoom;
-	else if (keycode == KEY_UP)
-		frac->offsetimag -= 0.1 / frac->zoom;
-	else if (keycode == KEY_LEFT)
-		frac->offsetreal -= 0.1 / frac->zoom;
-	else if (keycode == KEY_RIGHT)
-		frac->offsetreal += 0.1 / frac->zoom;
-	else if (keycode == 53)
+	if (keycode == 49)
+		frac->color_shift = (rand() % 0xFFFFFF);
+	if (keycode == 53)
 		exit(0);
-	draw_mlbro(frac);	
+	draw_mlbro(frac);
 	mlx_put_image_to_window(frac->init, frac->wind, frac->img, 0, 0);
 	return (0);
 }
@@ -79,6 +73,7 @@ int	main(int ac, char**av)
 	frac = malloc(sizeof(t_fractal));
 	if (!frac)
 		return (write(2, "Allocation error\n", 18), 1);
+	frac->color_shift = 0x010101;
 	if (ac == 2)
 	{
 		if (ft_strncmp("Mandelbrot", av[1], 11) == 0)

@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 14:36:01 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/02/27 09:58:52 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/03/04 06:00:35 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	helper(t_fractal *frac, double imag, double real)
 	if (iter == frac->interation)
 		frac->color = 0x000000;
 	else
-		frac->color = (iter * 255 / frac->interation) * 0x010101;
+		frac->color = (iter * 255 / frac->interation) * frac->color_shift;
 	my_mlx_pixel_put(frac);
 }
 

@@ -22,13 +22,16 @@ all: $(NAME)
 
 bonus: $(NAMEB)
 
-$(NAMEB): $(OBJB) $(HEADERB)
+$(NAMEB): $(OBJB)
 	$(CC) $(OBJB) $(MLX_FLAGS) -o $(NAMEB)
 
 $(NAME): $(OBJ)
 	$(CC) $(OBJ) $(MLX_FLAGS) -o $(NAME)
 
 mandatory/%.o: mandatory/%.c $(HEADER)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+%_bonus.o: %_bonus.c $(HEADERB)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 %.o: %.c

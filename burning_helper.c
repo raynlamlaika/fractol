@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 13:16:09 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/03/02 22:15:39 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/03/04 06:15:19 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 int	key_hook_burning(int keycode, t_fractal *frac)
 {
-	if (keycode == KEY_DOWN)
+	if (keycode == 49)
+		frac->color_shift = (rand() % 0xFFFFFF);
+	else if (keycode == KEY_DOWN)
 		frac->offsetimag += 0.1 / frac->zoom;
 	else if (keycode == KEY_UP)
 		frac->offsetimag -= 0.1 / frac->zoom;

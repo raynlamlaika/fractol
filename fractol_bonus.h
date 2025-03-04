@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 08:58:31 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/03/02 22:10:23 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/03/04 06:07:38 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ typedef struct s_fractal
 	double	position_y;
 	int		x_loop;
 	int		y_loop;
+	int		color_shift;
 }			t_fractal;
-
 
 int		init_fractal(t_fractal *fractal);
 int		ft_strncmp(const char *str1, const char *str2, size_t num);
@@ -67,7 +67,6 @@ int		init_julia(t_fractal *frac, char**av);
 void	draw_julia(t_fractal *frac);
 int		mouse_hook_julia(int button, int x, int y, t_fractal *frac);
 int		key_hook_julia(int keycode, t_fractal *frac);
-void	mouse_position(int x, int y, t_fractal *frac);
 void	burning_ship(t_fractal *frac);
 void	draw_burning(t_fractal *frac);
 int		clearr(t_fractal *frac);

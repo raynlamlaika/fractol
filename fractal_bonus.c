@@ -6,11 +6,11 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 13:04:50 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/02/28 13:27:15 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/03/04 05:47:40 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "fractol_bonus.h"
 
 void	draw_buring_ship(t_fractal *frac)
 {

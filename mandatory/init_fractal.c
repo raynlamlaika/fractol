@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 15:26:58 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/02/27 10:00:04 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/03/04 05:43:07 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,5 @@ int	init_fractal(t_fractal *fractal)
 	if (!fractal->addr)
 		exit(1);
 	fractal->zoom = 1.03;
-	fractal->offsetreal = -2.0;
-	fractal->offsetimag = -2.0;
 	return (1);
 }

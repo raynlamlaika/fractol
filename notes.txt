@@ -22,10 +22,20 @@ after that we creat in pointer to hold the data from the the image that we open 
 so right now we have our data that we  do work on it and the needed pointers and things so we are ready to star drawign with our mathimatiques formula
 
 the main ormula is Zn+1 = Zn2 + c
-    where we represent every element with 
+    where we represent every element with  in struct 
+     in the while loop of the helper function we have 
+     the tmp var that he hold the equation of : real(Zn + 1​)= real(Zn) 2 − imag(Zn) 2 + real(C).
+     and the var of newimg help the value of the nre imaginer number:
+
+
 first in the helper funcltion we initialize the varibiles like the inter that he reresent the iteraiiton that 
 we will pass to the programe and  it start with and finish with the max iterations 
 
+
+
+right now we gonna talk about the key event and the mouse event whitch is part of the bous part 
+som in mandatory the keys we do use them by just specifing the keys and whe the loop are looping and havning any now event it  do incremmnet or
+decremment the values like for example :
 
 
 
